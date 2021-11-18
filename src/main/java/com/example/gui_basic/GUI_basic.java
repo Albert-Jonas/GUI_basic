@@ -17,7 +17,7 @@ import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class HelloApplication extends Application {
+public class GUI_basic extends Application {
 
     Button button;
 

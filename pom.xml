@@ -80,7 +80,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.gui_basic/com.example.gui_basic.HelloApplication</mainClass>
+                            <mainClass>com.example.gui_basic/com.example.gui_basic.GUI_basic</mainClass>
                         </configuration>
                     </execution>
                 </executions>
