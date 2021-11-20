@@ -1,5 +1,7 @@
 package com.example.gui_basic;
 
+//új sor, ami comment
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
