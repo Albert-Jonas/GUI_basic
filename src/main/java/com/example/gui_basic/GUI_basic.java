@@ -35,7 +35,6 @@ public class GUI_basic extends Application {
     TextField kedvezmenyesAr = new TextField();
     CheckBox usaUtazas = new CheckBox("USA-ba utazik");
     Button kedvezmenyGomb = new Button("Várható kedvezmény");
-    TextField result = new TextField();
     Scene scene = new Scene(rootNode, 500, 350);
 
     @Override
@@ -46,7 +45,13 @@ public class GUI_basic extends Application {
         rootNode.setVgap(5);
         rootNode.setAlignment(Pos.CENTER);
         GridPane.setHalignment(kedvezmenyGomb, HPos.LEFT);
-        result.setEditable(false);
+
+        alapErtek.setEditable(false);
+        kedvezmenyMertek.setEditable(false);
+        kedvezmenyesAr.setEditable(false);
+
+        alapErtek.setText("1000");
+
         primaryStage.setScene(scene);
 
         rootNode.add(new Label("Kérem a születési dátumot"), 0, 0);
