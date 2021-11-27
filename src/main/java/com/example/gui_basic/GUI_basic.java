@@ -8,6 +8,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -29,9 +30,13 @@ public class GUI_basic extends Application {
     TextField szuletesNap = new TextField();
     TextField utazasNap = new TextField();
     TextField visszateresNap = new TextField();
-    Button aButton = new Button("Label");
+    TextField alapErtek = new TextField();
+    TextField kedvezmenyMertek = new TextField();
+    TextField kedvezmenyesAr = new TextField();
+    CheckBox usaUtazas = new CheckBox("USA-ba utazik");
+    Button kedvezmenyGomb = new Button("Várható kedvezmény");
     TextField result = new TextField();
-    Scene scene = new Scene(rootNode, 300, 250);
+    Scene scene = new Scene(rootNode, 500, 350);
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -40,7 +45,7 @@ public class GUI_basic extends Application {
         rootNode.setHgap(5);
         rootNode.setVgap(5);
         rootNode.setAlignment(Pos.CENTER);
-        GridPane.setHalignment(aButton, HPos.LEFT);
+        GridPane.setHalignment(kedvezmenyGomb, HPos.LEFT);
         result.setEditable(false);
         primaryStage.setScene(scene);
 
@@ -50,10 +55,16 @@ public class GUI_basic extends Application {
         rootNode.add(utazasNap, 1, 1);
         rootNode.add(new Label("Vissza út"), 2, 0);
         rootNode.add(visszateresNap, 2, 1);
-        rootNode.add(new Label("Action"), 0, 2);
-        rootNode.add(aButton, 1, 2);
-        rootNode.add(result, 1, 3);
+        rootNode.add(usaUtazas, 0,2);
+        rootNode.add(kedvezmenyGomb, 2,2);
+        rootNode.add(new Label("Alap érték"), 0,3);
+        rootNode.add(alapErtek, 0,4);
+        rootNode.add(new Label("Kedvezmény mértéke"), 1,3);
+        rootNode.add(kedvezmenyMertek, 1,4);
+        rootNode.add(new Label("Kedvedzényes ár"),2,3);
+        rootNode.add(kedvezmenyesAr,2,4);
 
+        primaryStage.close();
         primaryStage.show();
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
@@ -66,6 +77,6 @@ public class GUI_basic extends Application {
             }
         };
 
-        aButton.setOnAction(event);
+        kedvezmenyGomb.setOnAction(event);
     }
 }
