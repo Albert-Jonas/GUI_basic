@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -42,7 +43,7 @@ public class GUI_basic extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Title");
+        primaryStage.setTitle("Utazási iroda");
         rootNode.setPadding(new Insets(15));
         rootNode.setHgap(5);
         rootNode.setVgap(5);
@@ -63,17 +64,27 @@ public class GUI_basic extends Application {
         rootNode.add(utazasNap, 1, 1);
         rootNode.add(new Label("Vissza út"), 2, 0);
         rootNode.add(visszateresNap, 2, 1);
-        rootNode.add(usaUtazas, 0,2);
-        rootNode.add(kedvezmenyGomb, 2,2);
-        rootNode.add(new Label("Alap érték"), 0,3);
-        rootNode.add(alapErtek, 0,4);
-        rootNode.add(new Label("Kedvezmény mértéke"), 1,3);
-        rootNode.add(kedvezmenyMertek, 1,4);
-        rootNode.add(new Label("Kedvedzényes ár"),2,3);
-        rootNode.add(kedvezmenyesAr,2,4);
-        rootNode.add(okGomb,0,5);
-        rootNode.add(kilepesGomb,1,5);
-        rootNode.add(resetGomb,2,5);
+
+        rootNode.add(new Label(" "),0,2);
+
+        rootNode.add(usaUtazas, 0,3);
+        rootNode.add(kedvezmenyGomb, 2,3);
+
+        rootNode.add(new Label(" "),0,4);
+
+        rootNode.add(new Label("Alap érték"), 0,5);
+        rootNode.add(alapErtek, 0,6);
+        rootNode.add(new Label("Kedvezmény mértéke"), 1,5);
+        rootNode.add(kedvezmenyMertek, 1,6);
+        rootNode.add(new Label("Kedvedzényes ár"),2,5);
+        rootNode.add(kedvezmenyesAr,2,6);
+
+        rootNode.add(new Label(" "),0,7);
+        rootNode.add(new Label(" "),0,8);
+
+        rootNode.add(okGomb,0,9);
+        rootNode.add(kilepesGomb,1,9);
+        rootNode.add(resetGomb,2,9);
 
         primaryStage.close();
         primaryStage.show();
