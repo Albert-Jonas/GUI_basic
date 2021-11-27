@@ -16,6 +16,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.HPos;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Date;
+
 public class GUI_basic extends Application {
 
     public static void main(String[] args) {
@@ -107,6 +111,31 @@ public class GUI_basic extends Application {
 
                 usaUtazas.setSelected(false);
             }
+            else if (actionEvent.getSource()==kedvezmenyGomb)
+            {
+                Date maiNap = new Date();
+                boolean isUsaUticel = usaUtazas.isSelected();
+                double kedvezmenySzazalek = 0;
+
+                if (isUsaUticel == false && !(utazasNap.getValue().getDayOfWeek() == DayOfWeek.FRIDAY || utazasNap.getValue().getDayOfWeek() == DayOfWeek.MONDAY))
+                {
+                    kedvezmenySzazalek += 25;
+                }
+
+                if (visszateresNap.getValue().minusDays(6).isAfter(utazasNap.getValue()))
+                {
+                    kedvezmenySzazalek += 10;
+                }
+
+                kedvezmenyMertek.setText(Double.toString(kedvezmenySzazalek));
+
+            }
         }
     };
+    static int eletkorSzamolo(Date szuletes)
+    {
+        float milisecs = System.currentTimeMillis() - szuletes.getTime();
+        int years = Math.round(milisecs/31556952000L);
+        return years;
+    }
 }
