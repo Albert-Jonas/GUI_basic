@@ -8,17 +8,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.HPos;
-
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 public class GUI_basic extends Application {
 
@@ -27,9 +23,9 @@ public class GUI_basic extends Application {
     }
 
     GridPane rootNode = new GridPane();
-    TextField szuletesNap = new TextField();
-    TextField utazasNap = new TextField();
-    TextField visszateresNap = new TextField();
+    DatePicker szuletesNap = new DatePicker ();
+    DatePicker utazasNap = new DatePicker();
+    DatePicker visszateresNap = new DatePicker();
     TextField alapErtek = new TextField();
     TextField kedvezmenyMertek = new TextField();
     TextField kedvezmenyesAr = new TextField();
@@ -102,9 +98,9 @@ public class GUI_basic extends Application {
             }
             else if (actionEvent.getSource()==resetGomb)
             {
-                szuletesNap.setText("");
-                utazasNap.setText("");
-                visszateresNap.setText("");
+                szuletesNap.getEditor().clear();
+                utazasNap.getEditor().clear();
+                visszateresNap.getEditor().clear();
 
                 kedvezmenyesAr.setText("");
                 kedvezmenyMertek.setText("");
