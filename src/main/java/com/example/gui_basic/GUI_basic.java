@@ -35,6 +35,9 @@ public class GUI_basic extends Application {
     TextField kedvezmenyesAr = new TextField();
     CheckBox usaUtazas = new CheckBox("USA-ba utazik");
     Button kedvezmenyGomb = new Button("Várható kedvezmény");
+    Button okGomb = new Button("Ok");
+    Button kilepesGomb = new Button("Kilépés");
+    Button resetGomb = new Button("Reset");
     Scene scene = new Scene(rootNode, 500, 350);
 
     @Override
@@ -68,6 +71,9 @@ public class GUI_basic extends Application {
         rootNode.add(kedvezmenyMertek, 1,4);
         rootNode.add(new Label("Kedvedzényes ár"),2,3);
         rootNode.add(kedvezmenyesAr,2,4);
+        rootNode.add(okGomb,0,5);
+        rootNode.add(kilepesGomb,1,5);
+        rootNode.add(resetGomb,2,5);
 
         primaryStage.close();
         primaryStage.show();
