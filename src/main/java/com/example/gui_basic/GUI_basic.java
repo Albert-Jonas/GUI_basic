@@ -3,13 +3,12 @@ package com.example.gui_basic;
 //új sor, ami comment
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -89,16 +88,29 @@ public class GUI_basic extends Application {
         primaryStage.close();
         primaryStage.show();
 
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-//                Integer value1 = Integer.valueOf(Value1.getText());
-//                Integer value2 = Integer.valueOf(Value2.getText());
-//                Integer r = value1 + value2;
-//                result.setText(r.toString());
-            }
-        };
-
         kedvezmenyGomb.setOnAction(event);
+        kilepesGomb.setOnAction(event);
+        resetGomb.setOnAction(event);
     }
+
+    EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            if (actionEvent.getSource()==kilepesGomb)
+            {
+                Platform.exit();
+            }
+            else if (actionEvent.getSource()==resetGomb)
+            {
+                szuletesNap.setText("");
+                utazasNap.setText("");
+                visszateresNap.setText("");
+
+                kedvezmenyesAr.setText("");
+                kedvezmenyMertek.setText("");
+
+                usaUtazas.setSelected(false);
+            }
+        }
+    };
 }
