@@ -21,15 +21,14 @@ import javafx.scene.control.TextField;
 
 public class GUI_basic extends Application {
 
-    Button button;
-
     public static void main(String[] args) {
         launch(args);
     }
 
     GridPane rootNode = new GridPane();
-    TextField Value1 = new TextField();
-    TextField Value2 = new TextField();
+    TextField szuletesNap = new TextField();
+    TextField utazasNap = new TextField();
+    TextField visszateresNap = new TextField();
     Button aButton = new Button("Label");
     TextField result = new TextField();
     Scene scene = new Scene(rootNode, 300, 250);
@@ -45,10 +44,12 @@ public class GUI_basic extends Application {
         result.setEditable(false);
         primaryStage.setScene(scene);
 
-        rootNode.add(new Label("Value1"), 0, 0);
-        rootNode.add(Value1, 1, 0);
-        rootNode.add(new Label("Value2"), 0, 1);
-        rootNode.add(Value2, 1, 1);
+        rootNode.add(new Label("Kérem a születési dátumot"), 0, 0);
+        rootNode.add(szuletesNap, 0, 1);
+        rootNode.add(new Label("Utazás napja"), 1, 0);
+        rootNode.add(utazasNap, 1, 1);
+        rootNode.add(new Label("Vissza út"), 2, 0);
+        rootNode.add(visszateresNap, 2, 1);
         rootNode.add(new Label("Action"), 0, 2);
         rootNode.add(aButton, 1, 2);
         rootNode.add(result, 1, 3);
@@ -58,10 +59,10 @@ public class GUI_basic extends Application {
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Integer value1 = Integer.valueOf(Value1.getText());
-                Integer value2 = Integer.valueOf(Value2.getText());
-                Integer r = value1 + value2;
-                result.setText(r.toString());
+//                Integer value1 = Integer.valueOf(Value1.getText());
+//                Integer value2 = Integer.valueOf(Value2.getText());
+//                Integer r = value1 + value2;
+//                result.setText(r.toString());
             }
         };
 
