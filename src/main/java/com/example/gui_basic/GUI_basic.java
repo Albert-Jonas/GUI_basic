@@ -139,6 +139,8 @@ public class GUI_basic extends Application {
     static int eletkorSzamolo(LocalDate szuletes)
     {
         LocalDate maiNap = LocalDate.now();
+        //Teszt
+
         int years = (int)java.time.temporal.ChronoUnit.YEARS.between(szuletes, maiNap);
         return years;
     }
