@@ -140,6 +140,11 @@ public class GUI_basic extends Application {
     {
         LocalDate maiNap = LocalDate.now();
         //Teszt
+      /*
+       *******************************
+       *Ide Bozso írt egy szép kódot *
+       *******************************
+       */
 
         int years = (int)java.time.temporal.ChronoUnit.YEARS.between(szuletes, maiNap);
         return years;
