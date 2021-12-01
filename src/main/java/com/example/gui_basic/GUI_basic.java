@@ -113,7 +113,6 @@ public class GUI_basic extends Application {
             }
             else if (actionEvent.getSource()==kedvezmenyGomb)
             {
-                Date maiNap = new Date();
                 boolean isUsaUticel = usaUtazas.isSelected();
                 double kedvezmenySzazalek = 0;
 
@@ -127,15 +126,20 @@ public class GUI_basic extends Application {
                     kedvezmenySzazalek += 10;
                 }
 
+                if (eletkorSzamolo(szuletesNap.getValue()) <= 2)
+                {
+                    kedvezmenySzazalek = 100;
+                }
+
                 kedvezmenyMertek.setText(Double.toString(kedvezmenySzazalek));
 
             }
         }
     };
-    static int eletkorSzamolo(Date szuletes)
+    static int eletkorSzamolo(LocalDate szuletes)
     {
-        float milisecs = System.currentTimeMillis() - szuletes.getTime();
-        int years = Math.round(milisecs/31556952000L);
+        LocalDate maiNap = LocalDate.now();
+        int years = (int)java.time.temporal.ChronoUnit.YEARS.between(szuletes, maiNap);
         return years;
     }
 }
