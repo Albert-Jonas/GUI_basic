@@ -22,6 +22,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Optional;
 
 public class GUI_basic extends Application {
@@ -110,9 +111,9 @@ public class GUI_basic extends Application {
 // *************************************************************************************Teszt Adatok**************************************************************
     private void tesztAdatok() {
 
-        szuletesNap.setValue(LocalDate.of(2021, 9, 10));
-        utazasNap.setValue (LocalDate.of(2021, 9, 19));
-        visszateresNap.setValue(LocalDate.of(2021, 9, 20));
+        szuletesNap.setValue(LocalDate.of(2021, 12, 4));
+        utazasNap.setValue (LocalDate.of(2022, 10, 19));
+        visszateresNap.setValue(LocalDate.of(2022, 10, 26));
 
     }
 //********************************************************Kilikkek****************************************************
@@ -150,6 +151,7 @@ public class GUI_basic extends Application {
             LocalDate now = LocalDate.now();
             int ev=(int) ChronoUnit.YEARS.between(szuletesNap.getValue(), now);
             int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
+           
             System.out.println("ev = " + ev);
             System.out.println("nap = " + nap);
             // százalék kezdő értéke
@@ -183,41 +185,15 @@ public class GUI_basic extends Application {
 
 
 
-        // **********************************************************************Számolás************************************************************
-      /*  private void szamitas() {
-            LocalDate now = LocalDate.now();
-            int ev=(int) ChronoUnit.YEARS.between(szuletesNap.getValue(), now);
-            int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
-            System.out.println("ev = " + ev);
-            System.out.println("nap = " + nap);
-            szazalek = 0;
-
-         *//*   if (ev<=2){
-                szazalek = 100;
-                return ;
-            }else if (ev >2 && ev <=18 ){
-                szazalek+=40;
-            }else if (nap > 6){
-                szazalek+=10;
-            }*//*
-
-
-        if (usaUtazas.isSelected() == false && (utazasNap.getValue().getDayOfWeek() !=DayOfWeek.FRIDAY || utazasNap.getValue().getDayOfWeek() != DayOfWeek.MONDAY ))
-                szazalek+=25;
-            System.out.println("usaUtazas.isSelected() = " + usaUtazas.isSelected());
-        }*/
-
-        
-
-    //      if (usaUt; == false && (utazasNap.getValue().getDayOfWeek() != DayOfWeek.FRIDAY || utazasNap.getValue().getDayOfWeek() != DayOfWeek.MONDAY))
-
         // **********************************************************************Hónap kitőltés ellenőrzése************************************************************
 
         private boolean kitoltesMegfelelo() {
             boolean visszErtek = true;
-            Date now = new Date();
+            LocalDate now = LocalDate.now();
             int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
-            int napos=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), szuletesNap.getValue());
+            int napos=(int) ChronoUnit.DAYS.between(szuletesNap.getValue(), utazasNap.getValue());
+            int oregebEMintMa = (int) ChronoUnit.DAYS.between(utazasNap.getValue(), now);
+            
 
             if (szuletesNap.getEditor().getText() == "") {
                 visszErtek = false;
@@ -246,6 +222,13 @@ public class GUI_basic extends Application {
                 utazasNap.setStyle("-fx-background-color: RED");
                 szuletesNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
+                System.out.println("napos = " + napos);
+            }
+            if (oregebEMintMa< 0){
+
+                szuletesNap.setStyle("-fx-background-color: RED");
+                visszErtek = false;
+                System.out.println("napos = " + napos);
             }
 
 
@@ -274,7 +257,7 @@ public class GUI_basic extends Application {
     }
 
 
-
+//********************************************************************Gégi kódok **************************************
 
     /*EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
         @Override
@@ -321,4 +304,33 @@ public class GUI_basic extends Application {
         int years = Math.round(milisecs/31556952000L);
         return years;
     }*/
+
+    // **********************************************************************Számolás************************************************************
+      /*  private void szamitas() {
+            LocalDate now = LocalDate.now();
+            int ev=(int) ChronoUnit.YEARS.between(szuletesNap.getValue(), now);
+            int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
+            System.out.println("ev = " + ev);
+            System.out.println("nap = " + nap);
+            szazalek = 0;
+
+         *//*   if (ev<=2){
+                szazalek = 100;
+                return ;
+            }else if (ev >2 && ev <=18 ){
+                szazalek+=40;
+            }else if (nap > 6){
+                szazalek+=10;
+            }*//*
+
+
+        if (usaUtazas.isSelected() == false && (utazasNap.getValue().getDayOfWeek() !=DayOfWeek.FRIDAY || utazasNap.getValue().getDayOfWeek() != DayOfWeek.MONDAY ))
+                szazalek+=25;
+            System.out.println("usaUtazas.isSelected() = " + usaUtazas.isSelected());
+        }*/
+
+
+
+    //      if (usaUt; == false && (utazasNap.getValue().getDayOfWeek() != DayOfWeek.FRIDAY || utazasNap.getValue().getDayOfWeek() != DayOfWeek.MONDAY))
+
 }
