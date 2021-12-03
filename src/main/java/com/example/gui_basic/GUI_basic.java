@@ -110,7 +110,7 @@ public class GUI_basic extends Application {
 // *************************************************************************************Teszt Adatok**************************************************************
     private void tesztAdatok() {
 
-        szuletesNap.setValue(LocalDate.of(1969, 9, 19));
+        szuletesNap.setValue(LocalDate.of(2021, 9, 10));
         utazasNap.setValue (LocalDate.of(2021, 9, 19));
         visszateresNap.setValue(LocalDate.of(2021, 9, 20));
 
@@ -144,7 +144,7 @@ public class GUI_basic extends Application {
             }
 
         }
-
+//*********************************************************Számítás 2 ***********************************************
         private void szamitasV2() {
             // értékadások
             LocalDate now = LocalDate.now();
@@ -215,8 +215,9 @@ public class GUI_basic extends Application {
 
         private boolean kitoltesMegfelelo() {
             boolean visszErtek = true;
+            Date now = new Date();
             int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
-
+            int napos=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), szuletesNap.getValue());
 
             if (szuletesNap.getEditor().getText() == "") {
                 visszErtek = false;
@@ -239,6 +240,11 @@ public class GUI_basic extends Application {
             if (nap < 0){
                 visszateresNap.setStyle("-fx-background-color: RED");
                 utazasNap.setStyle("-fx-background-color: RED");
+                visszErtek = false;
+            }
+            if (napos < 0){
+                utazasNap.setStyle("-fx-background-color: RED");
+                szuletesNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
             }
 
