@@ -111,7 +111,7 @@ public class GUI_basic extends Application {
 // *************************************************************************************Teszt Adatok**************************************************************
     private void tesztAdatok() {
 
-        szuletesNap.setValue(LocalDate.of(2021, 12, 4));
+        szuletesNap.setValue(LocalDate.of(1969, 9, 19));
         utazasNap.setValue (LocalDate.of(2022, 10, 19));
         visszateresNap.setValue(LocalDate.of(2022, 10, 26));
 
@@ -127,7 +127,7 @@ public class GUI_basic extends Application {
             } else if (actionEvent.getSource() == resetGomb) {
                 reset();
 //
-                //System.out.println(resetGomb);
+                System.out.println(resetGomb);
             } else if (actionEvent.getSource() == okGomb) {
                 boolean helyesE;
                 helyesE = kitoltesMegfelelo();
@@ -224,12 +224,12 @@ public class GUI_basic extends Application {
                 visszErtek = false;
                 System.out.println("napos = " + napos);
             }
-            if (oregebEMintMa< 0){
+           /* if (oregebEMintMa< 0){
 
                 szuletesNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
                 System.out.println("napos = " + napos);
-            }
+            }*/
 
 
             return visszErtek;
