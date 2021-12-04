@@ -64,7 +64,9 @@ public class GUI_basic extends Application {
         alapErtek.setEditable(false);
         kedvezmenyMertek.setEditable(false);
         kedvezmenyesAr.setEditable(false);
-
+        szuletesNap.setEditable(false);
+        utazasNap.setEditable(false);
+        visszateresNap.setEditable(false);
 
         primaryStage.setScene(scene);
 
@@ -111,7 +113,7 @@ public class GUI_basic extends Application {
 // *************************************************************************************Teszt Adatok**************************************************************
     private void tesztAdatok() {
 
-        szuletesNap.setValue(LocalDate.of(1969, 9, 19));
+        szuletesNap.setValue(LocalDate.of(2021, 12, 19));
         utazasNap.setValue (LocalDate.of(2022, 10, 19));
         visszateresNap.setValue(LocalDate.of(2022, 10, 26));
 
@@ -193,7 +195,9 @@ public class GUI_basic extends Application {
             int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
             int napos=(int) ChronoUnit.DAYS.between(szuletesNap.getValue(), utazasNap.getValue());
             int oregebEMintMa = (int) ChronoUnit.DAYS.between(utazasNap.getValue(), now);
-            
+
+            System.out.println("now = " + now);
+            System.out.println("oregebEMintMa = " + oregebEMintMa);
 
             if (szuletesNap.getEditor().getText() == "") {
                 visszErtek = false;
@@ -224,7 +228,7 @@ public class GUI_basic extends Application {
                 visszErtek = false;
                 System.out.println("napos = " + napos);
             }
-           /* if (oregebEMintMa< 0){
+         /* if (< 0){
 
                 szuletesNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
