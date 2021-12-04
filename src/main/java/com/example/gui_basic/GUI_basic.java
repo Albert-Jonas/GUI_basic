@@ -1,6 +1,5 @@
 package com.example.gui_basic;
 
-//új sor, ami comment
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -9,8 +8,6 @@ import javafx.event.EventHandler;
 
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 
@@ -21,9 +18,7 @@ import javafx.geometry.HPos;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Optional;
+
 
 public class GUI_basic extends Application {
 
@@ -42,13 +37,13 @@ public class GUI_basic extends Application {
     TextField kedvezmenyMertek = new TextField();
     TextField kedvezmenyesAr = new TextField();
     CheckBox usaUtazas = new CheckBox("USA-ba utazik");
-    Button kedvezmenyGomb = new Button("Várható kedvezmény");
+    Button kedvezmenyGomb = new Button("Várható kedvezmény %ban");
     Button okGomb = new Button("Ok");
     Button kilepesGomb = new Button("Kilépés");
     Button resetGomb = new Button("Reset");
     Scene scene = new Scene(rootNode, 500, 350);
 
-    int szazalek;
+    int szazalek = 0;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -59,11 +54,12 @@ public class GUI_basic extends Application {
         rootNode.setAlignment(Pos.CENTER);
         GridPane.setHalignment(kedvezmenyGomb, HPos.LEFT);
 
-        reset();
+        //reset();
 
         alapErtek.setEditable(false);
         kedvezmenyMertek.setEditable(false);
         kedvezmenyesAr.setEditable(false);
+
         szuletesNap.setEditable(false);
         utazasNap.setEditable(false);
         visszateresNap.setEditable(false);
@@ -123,11 +119,13 @@ public class GUI_basic extends Application {
         @Override
         public void handle(ActionEvent actionEvent) {
             if (actionEvent.getSource() == kilepesGomb) {
+                System.out.println("Kilépés gomb");
                 Platform.exit();
             } else if (actionEvent.getSource() == kedvezmenyGomb) {
-                System.out.println(kedvezmenyGomb);
+                System.out.println("kedvezmenyGomb");
             } else if (actionEvent.getSource() == resetGomb) {
-                reset();
+               reset();
+
 //
                 System.out.println(resetGomb);
             } else if (actionEvent.getSource() == okGomb) {
