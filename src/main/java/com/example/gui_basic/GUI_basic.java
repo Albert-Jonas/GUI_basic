@@ -54,7 +54,8 @@ public class GUI_basic extends Application {
         rootNode.setAlignment(Pos.CENTER);
         GridPane.setHalignment(kedvezmenyGomb, HPos.LEFT);
 
-        //reset();
+        reset();
+
 
         alapErtek.setEditable(false);
         kedvezmenyMertek.setEditable(false);
@@ -65,6 +66,7 @@ public class GUI_basic extends Application {
         visszateresNap.setEditable(false);
 
         primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 
         rootNode.add(new Label("Kérem a születési dátumot"), 0, 0);
         rootNode.add(szuletesNap, 0, 1);
@@ -94,6 +96,7 @@ public class GUI_basic extends Application {
         rootNode.add(kilepesGomb, 1, 9);
         rootNode.add(resetGomb, 2, 9);
 
+		rootNode.isResizable();
         primaryStage.close();
         primaryStage.show();
 
@@ -123,17 +126,18 @@ public class GUI_basic extends Application {
                 Platform.exit();
             } else if (actionEvent.getSource() == kedvezmenyGomb) {
                 System.out.println("kedvezmenyGomb");
+                kedveznéyGomb();
             } else if (actionEvent.getSource() == resetGomb) {
                reset();
 
-//
                 System.out.println(resetGomb);
             } else if (actionEvent.getSource() == okGomb) {
                 boolean helyesE;
                 helyesE = kitoltesMegfelelo();
 
                 if (!helyesE) {
-                    util.hiba("Hiba a dátum mezőben");
+                    //util.hiba("Hiba a dátum mezőben", "Utazás nap vagy visszatérés nap dátum hiba");
+                    return;
                 } else {
                     szamitasV2();
                     kedvezmenyMertek.setText(String.valueOf(szazalek));
@@ -145,7 +149,17 @@ public class GUI_basic extends Application {
             }
 
         }
-//*********************************************************Számítás 2 ***********************************************
+    //*********************************************************Kedvezmény gomb ***********************************************
+    private void kedveznéyGomb() {
+
+            if (util.uresEdatum(szuletesNap.getValue())){
+            System.out.println("dátum jo");
+        };
+
+
+    }
+
+    //*********************************************************Számítás 2 ***********************************************
         private void szamitasV2() {
             // értékadások
             LocalDate now = LocalDate.now();
@@ -182,27 +196,53 @@ public class GUI_basic extends Application {
         }
 
 
-
-
-
         // **********************************************************************Hónap kitőltés ellenőrzése************************************************************
 
         private boolean kitoltesMegfelelo() {
             boolean visszErtek = true;
             LocalDate now = LocalDate.now();
-            int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
-            int napos=(int) ChronoUnit.DAYS.between(szuletesNap.getValue(), utazasNap.getValue());
-            int oregebEMintMa = (int) ChronoUnit.DAYS.between(utazasNap.getValue(), now);
+            int nap = 0;
+            int napos = 0;
 
-            System.out.println("now = " + now);
-            System.out.println("oregebEMintMa = " + oregebEMintMa);
+            // Életkor kiszámítás
+            if ((util.uresEdatum(szuletesNap.getValue())) && (util.uresEdatum(utazasNap.getValue()))) {
+               napos = (int) ChronoUnit.DAYS.between(szuletesNap.getValue(), utazasNap.getValue());
 
-            if (szuletesNap.getEditor().getText() == "") {
+            } else {
                 visszErtek = false;
                 szuletesNap.setStyle("-fx-background-color: RED");
-            } else {
-                szuletesNap.setStyle("-fx-background-color: black");
+                util.hiba("Dátum mező Hiba", "Születésnap vagy dátummező hiba");
             }
+            // Utazási napok kiszámítása - Hiba üzenettel
+
+            if ((util.uresEdatum(utazasNap.getValue())) && (util.uresEdatum(visszateresNap.getValue()))) {
+                nap = (int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
+            } else {
+                visszErtek = false;
+                utazasNap.setStyle("-fx-background-color: RED");
+                visszateresNap.setStyle("-fx-background-color: RED");
+                util.hiba("Dátum mező Hiba", "Utazás nap vagy visszatérés nap dátum hiba");
+            }
+
+            // Mainapnál nem lehet fiatalabb
+
+
+            // int oregebEMintMa = (int) ChronoUnit.DAYS.between(utazasNap.getValue(), now);
+                                //*******//
+            System.out.println("GUI_basic.kitoltesMegfelelo");
+            System.out.println("now = " + now);
+
+            //System.out.println("oregebEMintMa = " + oregebEMintMa);
+
+
+
+                if (szuletesNap.getEditor().getText() == "") {
+                    visszErtek = false;
+                    szuletesNap.setStyle("-fx-background-color: RED");
+                } else {
+                    szuletesNap.setStyle("-fx-background-color: black");
+                }
+
             if (utazasNap.getEditor().getText() == "") {
                 visszErtek = false;
                 utazasNap.setStyle("-fx-background-color: RED");
@@ -215,19 +255,22 @@ public class GUI_basic extends Application {
             } else {
                 visszateresNap.setStyle("-fx-background-color: black");
             }
-            if (nap < 0){
+            if (nap < 0) {
                 visszateresNap.setStyle("-fx-background-color: RED");
                 utazasNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
+                util.hiba("Dátum hiba","A visszaérkezés nap megelőzi az utazás napot");
             }
-            if (napos < 0){
+            if (napos < 0) {
                 utazasNap.setStyle("-fx-background-color: RED");
                 szuletesNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
+                //*****//
+                System.out.println("GUI_basic.kitoltesMegfelelo");
                 System.out.println("napos = " + napos);
             }
-         /* if (< 0){
 
+       /*  if (< 0){
                 szuletesNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
                 System.out.println("napos = " + napos);
@@ -242,12 +285,26 @@ public class GUI_basic extends Application {
    // **********************************************************************RESET************************************************************
 
     public void reset() {
-        szuletesNap.getEditor().clear();
+
+
+        /*szuletesNap.setValue(LocalDate.now());
+        utazasNap.setValue(LocalDate.now());
+        visszateresNap.setValue(LocalDate.now());*/
         utazasNap.getEditor().clear();
+        utazasNap.setValue(null);
+
         visszateresNap.getEditor().clear();
+        visszateresNap.setValue(null);
+
+        szuletesNap.getEditor().clear();
+        szuletesNap.setValue(null);
+
+
+
         kedvezmenyesAr.setText("");
         kedvezmenyMertek.setText("");
         usaUtazas.setSelected(false);
+
         alapErtek.setText("1000");
 
         szuletesNap.setStyle("-fx-background-color : black;");

@@ -4,13 +4,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class util {
-    public void hiba(String text) {
+    public void hiba(String ablakCim, String hibaUzenet) {
         Alert confirm = new Alert(Alert.AlertType.ERROR, null, ButtonType.OK);
-        confirm.setTitle(text);
-        confirm.setHeaderText(text);
+        confirm.setTitle(ablakCim);
+        confirm.setHeaderText(hibaUzenet);
         Optional<ButtonType> answer = confirm.showAndWait();
 
     }
@@ -25,4 +26,9 @@ public class util {
 
     boolean keteves(int ev) {
         return ev <= 2  ? true : false;}
+
+    public boolean uresEdatum(LocalDate datum) {
+        System.out.println("datum = " + datum);
+        return datum == null ? false : true;
+    }
 }
