@@ -31,4 +31,12 @@ public class util {
         System.out.println("datum = " + datum);
         return datum == null ? false : true;
     }
+    /**Kiír egy metődust
+        - változót
+            és az ő értékét*/
+
+    public void tesztUzenet(String metódus, String valtozo, int ertek) {
+        System.out.print("*** "+metódus + " -- "+ "Változó név :  "+ valtozo +" - " +"Értéke : "+ertek  );
+        System.out.println();
+    }
 }

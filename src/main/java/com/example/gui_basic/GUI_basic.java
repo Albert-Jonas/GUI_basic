@@ -125,8 +125,14 @@ public class GUI_basic extends Application {
                 System.out.println("Kilépés gomb");
                 Platform.exit();
             } else if (actionEvent.getSource() == kedvezmenyGomb) {
+
                 System.out.println("kedvezmenyGomb");
                 kedveznéyGomb();
+
+                kedvezmenyMertek.setText(String.valueOf(szazalek));
+                kedvezmenyesAr.setText(util.kedvezmenyesArSzamolo(alapErtek.getText(), szazalek));
+
+
             } else if (actionEvent.getSource() == resetGomb) {
                reset();
 
@@ -150,14 +156,40 @@ public class GUI_basic extends Application {
 
         }
     //*********************************************************Kedvezmény gomb ***********************************************
+
+
     private void kedveznéyGomb() {
+        LocalDate now = LocalDate.now();
+        int nap = 0,
+                ev = 0;
 
-            if (util.uresEdatum(szuletesNap.getValue())){
-            System.out.println("dátum jo");
-        };
+        if (util.uresEdatum(szuletesNap.getValue())) {
+            ev = (int) ChronoUnit.YEARS.between(szuletesNap.getValue(), now);
+        }
 
+        if ((util.uresEdatum(utazasNap.getValue())) && (util.uresEdatum(visszateresNap.getValue()))) {
+            nap = (int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
+        }
+
+        szazalek = nap >= 6 ? 10 : 0;
+
+        if (util.keteves(ev)) {
+            util.tesztUzenet("GUI_basic.kedveznéyGomb","ev",ev);
+            szazalek = 100;
+            return;
+
+    }else if (util.Ketto_tizennyolcE(ev)){
+        szazalek+=40;
+            System.out.println("GUI_basic.kedveznéyGomb");
+            System.out.println("szazalek = " + szazalek);
 
     }
+
+
+        System.out.println("****GUI_basic.kedveznéyGomb");
+        System.out.println("nap = " + nap);
+        System.out.println("ev = " + ev);
+        }
 
     //*********************************************************Számítás 2 ***********************************************
         private void szamitasV2() {
@@ -165,7 +197,8 @@ public class GUI_basic extends Application {
             LocalDate now = LocalDate.now();
             int ev=(int) ChronoUnit.YEARS.between(szuletesNap.getValue(), now);
             int nap=(int) ChronoUnit.DAYS.between(utazasNap.getValue(), visszateresNap.getValue());
-           
+
+            System.out.println("****GUI_basic.szamitasV2");
             System.out.println("ev = " + ev);
             System.out.println("nap = " + nap);
             // százalék kezdő értéke
@@ -174,6 +207,7 @@ public class GUI_basic extends Application {
             //Ha 2 éves
             if(util.keteves(ev)){
                 szazalek = 100;
+                System.out.println("****GUI_basic.szamitasV2");
                 System.out.println("2 éves");
                 return;
             // ha 2-18 év közötti
@@ -224,12 +258,12 @@ public class GUI_basic extends Application {
                 util.hiba("Dátum mező Hiba", "Utazás nap vagy visszatérés nap dátum hiba");
             }
 
-            // Mainapnál nem lehet fiatalabb
+
 
 
             // int oregebEMintMa = (int) ChronoUnit.DAYS.between(utazasNap.getValue(), now);
                                 //*******//
-            System.out.println("GUI_basic.kitoltesMegfelelo");
+            System.out.println("***GUI_basic.kitoltesMegfelelo");
             System.out.println("now = " + now);
 
             //System.out.println("oregebEMintMa = " + oregebEMintMa);
