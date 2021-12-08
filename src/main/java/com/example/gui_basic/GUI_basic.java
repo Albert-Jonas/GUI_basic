@@ -302,9 +302,12 @@ public class GUI_basic extends Application {
                 utazasNap.setStyle("-fx-background-color: RED");
                 szuletesNap.setStyle("-fx-background-color: RED");
                 visszErtek = false;
+                util.hiba("Dátum hiba","Születésnapja nem lehet nagyobb az utazás napjánál");
                 //*****//
+
                 System.out.println("GUI_basic.kitoltesMegfelelo");
                 System.out.println("napos = " + napos);
+
             }
 
        /*  if (< 0){
