@@ -53,6 +53,9 @@ public class GUI_basic extends Application {
         rootNode.setVgap(5);
         rootNode.setAlignment(Pos.CENTER);
         GridPane.setHalignment(kedvezmenyGomb, HPos.LEFT);
+        GridPane.setHalignment(okGomb, HPos.CENTER);
+        GridPane.setHalignment(resetGomb, HPos.CENTER);
+        GridPane.setHalignment(kilepesGomb, HPos.CENTER);
 
         reset();
 
