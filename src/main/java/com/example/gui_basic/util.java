@@ -19,9 +19,9 @@ public class util {
     public String kedvezmenyesArSzamolo(String alapErtek, int szazalek) {
         return String.valueOf(Integer.parseInt(alapErtek) - (Integer.parseInt(alapErtek) * szazalek / 100));
     }
-    boolean Ketto_tizennyolcE(int ev) {
+    public boolean Ketto_tizennyolcE(int ev) {
 
-        return  ev > 2 && ev < 18 ? true : false;
+        return  ev > 2 && ev <= 18 ? true : false;
     }
 
     boolean keteves(int ev) {
