@@ -22,7 +22,13 @@ public class testUtil{
         assertEquals(false, util.Ketto_tizennyolcE(-1));
         assertEquals(false, util.Ketto_tizennyolcE(2));
 
-
+    }
+    @Test
+    public void tesztKeteves(){
+        assertEquals(true, util.keteves(0));
+        assertEquals(true, util.keteves(2));
+        assertEquals(false, util.keteves(3));
+       // assertEquals(false, util.keteves(-1));
     }
 
 
