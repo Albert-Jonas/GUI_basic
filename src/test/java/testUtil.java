@@ -2,6 +2,8 @@ import com.example.gui_basic.util;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.assertEquals;
 
 public class testUtil{
@@ -28,8 +30,26 @@ public class testUtil{
         assertEquals(true, util.keteves(0));
         assertEquals(true, util.keteves(2));
         assertEquals(false, util.keteves(3));
-       // assertEquals(false, util.keteves(-1));
+        //assertEquals(false, util.keteves(-1));
     }
+    @Test
+    public void tesztKedvezmenyesArSzamolo(){
+        // 2 év alatti gyerekek ingyen utaznak
+        assertEquals("0", util.kedvezmenyesArSzamolo("1000",100));
+        //2-18 év közötti utasok 40% kedvezményt kapnak minden úticélra
+        assertEquals("600", util.kedvezmenyesArSzamolo("1000",40));
+       // Utasok, akik legalább 6 napot maradnak a célországban, újabb 10% kedvezményt kapnak
+        assertEquals("900", util.kedvezmenyesArSzamolo("1000",10));
+        assertEquals("500", util.kedvezmenyesArSzamolo("1000",50));
+        //Amerikába, de nem az USA-ba utazó vendégek 25% kedvezményt kapnak ha nem hétfőn vagy pénteken utaznak
+        assertEquals("750", util.kedvezmenyesArSzamolo("1000",25));
+        //18 évesnél idősebb USA-ba utazó vendégek 20% kedvezményt kapnak, ha nem hétfőn vagy pénteken utaznak (indulási idő).
+        assertEquals("800", util.kedvezmenyesArSzamolo("1000",2));
 
 
+    }
+    @Test
+    public void tesztUresEdatum(){
+       assertEquals(false, util.uresEdatum(null));
+    }
 }
