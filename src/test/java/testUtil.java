@@ -2,8 +2,6 @@ import com.example.gui_basic.util;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDate;
-
 import static org.junit.Assert.assertEquals;
 
 public class testUtil{
@@ -44,7 +42,7 @@ public class testUtil{
         //Amerikába, de nem az USA-ba utazó vendégek 25% kedvezményt kapnak ha nem hétfőn vagy pénteken utaznak
         assertEquals("750", util.kedvezmenyesArSzamolo("1000",25));
         //18 évesnél idősebb USA-ba utazó vendégek 20% kedvezményt kapnak, ha nem hétfőn vagy pénteken utaznak (indulási idő).
-        assertEquals("800", util.kedvezmenyesArSzamolo("1000",2));
+        assertEquals("800", util.kedvezmenyesArSzamolo("1000",20));
 
 
     }
