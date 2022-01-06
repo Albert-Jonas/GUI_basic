@@ -1,13 +1,12 @@
 import com.example.gui_basic.util;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class testUtil{
     util util = null;
 
-    @Before
+    @BeforeEach
     public void init(){
         util=new util();
     }
