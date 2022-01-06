@@ -113,7 +113,7 @@ public class GUI_basic extends Application {
         okGomb.setOnAction(eventB);
     }
 // *************************************************************************************Teszt Adatok**************************************************************
-    private void tesztAdatok() {
+    public void tesztAdatok() {
 
         szuletesNap.setValue(LocalDate.of(2021, 12, 19));
         utazasNap.setValue (LocalDate.of(2022, 10, 19));
