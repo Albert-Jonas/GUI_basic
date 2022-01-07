@@ -9,5 +9,5 @@ public interface DatabaseAccess {
     int GetData2();
 
     boolean SaveData(int a,int b);
-    boolean ResetData(int a, int b);
+    boolean ResetData();
 }
