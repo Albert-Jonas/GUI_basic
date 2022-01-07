@@ -14,12 +14,13 @@ public class ifSorozat {
 
         bekerSzoveg = bekeres();
         System.out.println("bekerSzoveg = " + bekerSzoveg);
-        System.out.println("A bekért szöveg : " + bekerSzoveg);
+        //System.out.println("A bekért szöveg : " + bekerSzoveg);
         text = textSzetvalaszt(bekerSzoveg);
         szam = szamSzetvalszt(bekerSzoveg);
         System.out.println("text = " + text);
         System.out.println("szam = " + szam);
         iutil.szam(szam);
+        iutil.betu(text);
     }
 
     private static int szamSzetvalszt(String bekerSzoveg) {
