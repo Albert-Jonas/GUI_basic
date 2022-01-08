@@ -14,8 +14,9 @@ public class testUtil{
     @Test
     public void testuresEdatum(){
         assertEquals(true, util.Ketto_tizennyolcE(5));
-        assertEquals(false, util.Ketto_tizennyolcE(2));
         assertEquals(true, util.Ketto_tizennyolcE(18));
+
+        assertEquals(false, util.Ketto_tizennyolcE(2));
         assertEquals(false, util.Ketto_tizennyolcE(19));
         assertEquals(false, util.Ketto_tizennyolcE(1));
         assertEquals(false, util.Ketto_tizennyolcE(-1));
@@ -26,6 +27,7 @@ public class testUtil{
     public void tesztKeteves(){
         assertEquals(true, util.keteves(0));
         assertEquals(true, util.keteves(2));
+
         assertEquals(false, util.keteves(3));
         //assertEquals(false, util.keteves(-1));
     }
