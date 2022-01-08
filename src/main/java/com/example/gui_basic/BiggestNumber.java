@@ -4,10 +4,10 @@ package com.example.gui_basic;
 
 // Importing generic Classes/Files
 
-class BiggestNumber {
+public class BiggestNumber {
 
     // Function to find the biggest of three numbers
-    static int biggestOfThree(int x, int y, int z)
+    public static int biggestOfThree(int x, int y, int z)
     {
 
         return z > (x > y ? x : y) ? z : ((x > y) ? x : y);

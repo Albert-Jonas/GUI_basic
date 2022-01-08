@@ -15,18 +15,20 @@ public class util {
         Optional<ButtonType> answer = confirm.showAndWait();
 
     }
-
+// Tesztelt
     public String kedvezmenyesArSzamolo(String alapErtek, int szazalek) {
         return String.valueOf(Integer.parseInt(alapErtek) - (Integer.parseInt(alapErtek) * szazalek / 100));
     }
-    boolean Ketto_tizennyolcE(int ev) {
+    //Tesztelt
+    public boolean Ketto_tizennyolcE(int ev) {
 
-        return  ev > 2 && ev < 18 ? true : false;
+        return  ev > 2 && ev <= 18 ? true : false;
     }
-
-    boolean keteves(int ev) {
+    //Tesztelt
+    public boolean keteves(int ev) {
         return ev <= 2  ? true : false;}
 
+    //Tesztelt
     public boolean uresEdatum(LocalDate datum) {
         System.out.println("datum = " + datum);
         return datum == null ? false : true;
