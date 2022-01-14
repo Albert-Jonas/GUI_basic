@@ -45,6 +45,11 @@ class AddMatricesTest {
     @Test
     void tesztPrintMatrix() {
         addMatrices.printMatrix(A,4,4);
+        System.out.println("*****");
+        addMatrices.printMatrix(B,4,4);
+        System.out.println("*****");
+        addMatrices.printMatrix(D,3,3);
+
     }
 
     @Test
