@@ -50,6 +50,7 @@ class AddMatricesTest {
     @Test
     void tesztAdd() {
         assertArrayEquals(C,addMatrices.add(A,B,4),"Cant add two of the same size");
+        AddMatrices.add(A,D,5);
 
         Exception exception = assertThrows(ArrayIndexOutOfBoundsException.class, () -> AddMatrices.add(A,D,5));
         String actualMessage = exception.getMessage();
