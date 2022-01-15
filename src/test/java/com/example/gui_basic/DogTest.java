@@ -22,33 +22,24 @@ class DogTest {
 
     }
 
-        @Test
-        @DisplayName("a kutya neve")
-        public void testGetName(){
+   @Test
+   @DisplayName("a kutya neve")
+   public void testGetName(){
 
-            assertEquals("Tokió",dogTest.getName());
+       assertEquals("Tokió",dogTest.getName());// @Test//@DisplayName(value = "a kutya fajtája")
+       assertEquals("Juhász",dogTest.getBreed());//@Test//@DisplayName("a kutya életkora")
+       assertEquals(10,dogTest.getAge());//@Test//@DisplayName("a kutya színe")
+       assertEquals("Szürke",dogTest.getColor());
 
-        // @Test
-        //@DisplayName(value = "a kutya fajtája")
+   }
 
-            assertEquals("Juhász",dogTest.getBreed());
-        //@Test
-        //@DisplayName("a kutya életkora")
-
-            assertEquals(10,dogTest.getAge());
-
-        //@Test
-        //@DisplayName("a kutya színe")
-            assertEquals("Szürke",dogTest.getColor());
-
-
-
-
-
-
-
-
-
-
-        }
-    };
+    @Test
+    @DisplayName("a kiírató függvény")
+    public void testToString(){
+        assertEquals(dogTest.toString(),
+                "Hi my name is "+ "Tokió"+
+                ".\nMy breed,age and color are " +
+                "Juhász"+"," + "10"+
+                ","+ "Szürke");
+    }
+}
