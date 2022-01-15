@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import javax.xml.namespace.QName;
 
@@ -13,6 +15,7 @@ class DogTest {
     Dog dogTest = null;
     Dog apa = null;
     Dog anya = null;
+    Dog pup = null;
 
     @BeforeEach
     public void init() {
@@ -91,5 +94,20 @@ class DogTest {
 
         dogTest = new Dog (apa, anya, "Pup");
         assertEquals("Fehér",dogTest.getColor());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "Fekete,Fekete,Fekete",
+            "Fehér,Fehér,Fehér"})
+    @DisplayName("PároztatásParamterizálva")
+    public void testParoztatasHappyPathParameters(String apaSzin, String anyaSzin, String pupSzin){
+
+        apa = new Dog("Morzsi", "Uszkár", 3, apaSzin);
+        anya = new Dog("Kuglóf", "Uszkár", 2, anyaSzin);
+
+        pup = new Dog (apa, anya, "Pup");
+        assertEquals(pupSzin,pup.getColor());
+
     }
 }
