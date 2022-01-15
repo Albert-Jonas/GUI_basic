@@ -54,6 +54,7 @@ class DogTest {
 
         dogTest = new Dog (apa, anya, "Pup");
         assertEquals("Fekete",dogTest.getColor());
+        assertEquals("Uszkár",dogTest.getBreed());
         assertEquals(0,dogTest.getAge());
 
 
@@ -69,5 +70,26 @@ class DogTest {
 
         dogTest = new Dog (apa, anya, "Pup");
         assertEquals("Szürke",dogTest.getColor());
+
+
+        apa = new Dog("Morzsi", "Uszkár", 3, "Fekete");
+        anya = new Dog("Kuglóf", "Uszkár", 2, "Barna");
+
+        dogTest = new Dog (apa, anya, "Pup");
+        assertEquals("Barna",dogTest.getColor());
+
+
+        apa = new Dog("Morzsi", "Uszkár", 3, "Fehér");
+        anya = new Dog("Kuglóf", "Uszkár", 2, "Fekete");
+
+        dogTest = new Dog (apa, anya, "Pup");
+        assertEquals("Szürke",dogTest.getColor());
+
+
+        apa = new Dog("Morzsi", "Uszkár", 3, "Fehér");
+        anya = new Dog("Kuglóf", "Uszkár", 2, "Fehér");
+
+        dogTest = new Dog (apa, anya, "Pup");
+        assertEquals("Fehér",dogTest.getColor());
     }
 }
