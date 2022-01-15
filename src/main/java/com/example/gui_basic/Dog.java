@@ -28,21 +28,21 @@ public class Dog
         {
             color = apa.getColor();
         }
-        else if (apa.getColor() == "Szürke" || anya.getColor() == "Szürke")
+        else if (apa.getColor().equals("Szürke") || anya.getColor().equals("Szürke"))
         {
             color = "Szürke";
         }
-        else if ( ( apa.getColor() == "Fekete" || apa.getColor() == "Fehér" ) && ( anya.getColor() == "Fekete" || anya.getColor() == "Fehér" ))
+        else if ( ( apa.getColor().equals("Fekete") || apa.getColor().equals("Fehér")) && ( anya.getColor().equals("Fekete") || anya.getColor().equals("Fehér")))
         {
             color = "Szürke";
         }
-        else if ( apa.getColor() == "Barna" || anya.getColor() == "Barna" )
+        else if ( apa.getColor().equals("Barna") || anya.getColor().equals("Barna"))
         {
-            if ( apa.getColor() == "Fekete" || anya.getColor() == "Fekete")
+            if ( apa.getColor().equals("Fekete") || anya.getColor().equals("Fekete"))
             {
                 color = "Barna";
             }
-            else if ( apa.getColor() == "Fehér" || anya.getColor() == "Fehér")
+            else if ( apa.getColor().equals("Fehér") || anya.getColor().equals("Fehér"))
             {
                 color = "Szürke";
             }

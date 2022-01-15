@@ -99,7 +99,21 @@ class DogTest {
     @ParameterizedTest
     @CsvSource({
             "Fekete,Fekete,Fekete",
-            "Fehér,Fehér,Fehér"})
+            "Fehér,Fekete,Szürke",
+            "Szürke,Fekete,Szürke",
+            "Barna,Fekete,Barna",
+            "Fekete,Fehér,Szürke",
+            "Fehér,Fehér,Fehér",
+            "Szürke,Fehér,Szürke",
+            "Barna,Fehér,Szürke",
+            "Szürke,Fehér,Szürke",
+            "Szürke,Fekete,Szürke",
+            "Szürke,Szürke,Szürke",
+            "Szürke,Barna,Szürke",
+            "Fekete,Barna,Barna",
+            "Fehér,Barna,Szürke",
+            "Szürke,Barna,Szürke",
+            "Barna,Barna,Barna" })
     @DisplayName("PároztatásParamterizálva")
     public void testParoztatasHappyPathParameters(String apaSzin, String anyaSzin, String pupSzin){
 
@@ -108,5 +122,6 @@ class DogTest {
 
         pup = new Dog (apa, anya, "Pup");
         assertEquals(pupSzin,pup.getColor());
+
     }
 }
