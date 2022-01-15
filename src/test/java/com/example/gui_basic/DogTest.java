@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DogTest {
     Dog dogTest = null;
+    Dog apa = null;
+    Dog anya = null;
 
     @BeforeEach
     public void init() {
@@ -41,5 +43,17 @@ class DogTest {
                 ".\nMy breed,age and color are " +
                 "Juhász"+"," + "10"+
                 ","+ "Szürke");
+    }
+
+    @Test
+    @DisplayName("Pároztatás")
+    public void testParoztatasHappyPath(){
+
+        apa = new Dog("Morzsi", "Uszkár", 3, "Fekete");
+        anya = new Dog("Kuglóf", "Uszkár", 2, "Fekete");
+
+        dogTest = new Dog (apa, anya, "Pup");
+        assertEquals("Fekete",dogTest.getColor());
+        assertEquals( 0,dogTest.getAge());
     }
 }
