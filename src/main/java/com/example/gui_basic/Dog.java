@@ -10,7 +10,48 @@ public class Dog
     int age;
     String color;
 
+    public Dog(Dog apa, Dog anya, String nameToGive)
+    {
+        age = 0;
+        name = nameToGive;
 
+        if (apa.getBreed() == anya.getBreed())
+        {
+            breed = apa.getBreed();
+        }
+        else
+        {
+            breed = "Keverék";
+        }
+
+        if (apa.getColor() == anya.getColor())
+        {
+            color = apa.getColor();
+        }
+        else if (apa.getColor() == "Szürke" || anya.getColor() == "Szürke")
+        {
+            color = "Szürke";
+        }
+        else if ( ( apa.getColor() == "Fekete" || apa.getColor() == "Fehér" ) && ( anya.getColor() == "Fekete" || anya.getColor() == "Fehér" ))
+        {
+            color = "Szürke";
+        }
+        else if ( apa.getColor() == "Barna" || anya.getColor() == "Barna" )
+        {
+            if ( apa.getColor() == "Fekete" || anya.getColor() == "Fekete")
+            {
+                color = "Barna";
+            }
+            else if ( apa.getColor() == "Fehér" || anya.getColor() == "Fehér")
+            {
+                color = "Szürke";
+            }
+            else
+            {
+                color = "Barna";
+            }
+        }
+    }
 
 
     // Constructor Declaration of Class
