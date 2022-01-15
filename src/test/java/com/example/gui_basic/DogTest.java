@@ -108,6 +108,5 @@ class DogTest {
 
         pup = new Dog (apa, anya, "Pup");
         assertEquals(pupSzin,pup.getColor());
-
     }
 }

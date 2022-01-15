@@ -24,7 +24,7 @@ public class Dog
             breed = "Keverék";
         }
 
-        if (apa.getColor() == anya.getColor())
+        if (apa.getColor().equals(anya.getColor()))
         {
             color = apa.getColor();
         }
