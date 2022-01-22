@@ -5,19 +5,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ifSorozatTest {
 
     ifSorozat ifSorozat = null;
+    InputStream sysInBackup = null;
 
     @BeforeEach
     void setUp() {
         ifSorozat = new ifSorozat();
+        InputStream sysInBackup = System.in; // backup System.in to restore it later
     }
 
     @AfterEach
     void tearDown() {
+        System.setIn(sysInBackup);
     }
 
     @Test
@@ -42,5 +48,12 @@ class ifSorozatTest {
         assertEquals(-2147483648, ifSorozat.szamSzetvalszt("erguh-21dg474dij8eg3drg64rg8ijgv"), "erguh-21dg474dij8eg3drg64rg8ijgv");
     // 0-val kezdődő számok
         assertEquals(11, ifSorozat.szamSzetvalszt("0 meg 0 meg 0 meg 1 az 1"), "0 meg 0 meg 0 meg 1 az 1");
+    }
+
+    @Test
+    void main() {
+        ByteArrayInputStream in = new ByteArrayInputStream("My string122".getBytes());
+        System.setIn(in);
+        ifSorozat.main(new String[] {"arg1", "arg2", "arg3"});
     }
 }
