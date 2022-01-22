@@ -64,6 +64,14 @@
             <scope>test</scope>
         </dependency>
         <!-- End for New dependency -->
+        <dependency>
+            <groupId>com.github.stefanbirkner</groupId>
+            <artifactId>system-lambda</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
