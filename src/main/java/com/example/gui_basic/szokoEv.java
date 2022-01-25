@@ -3,7 +3,7 @@ package com.example.gui_basic;
 public class szokoEv {
 
     public static void main(String[] args) {
-        boolean isev;
+       // boolean isev;
         //isev = ev(2000);
 
     }

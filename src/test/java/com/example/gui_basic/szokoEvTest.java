@@ -29,7 +29,10 @@ class szokoEvTest {
         assertFalse(szEv.ev(1581));
         assertTrue(szEv.ev(2000));
         assertTrue(szEv.ev(2004));
+        assertFalse(szEv.ev(2015));
         assertTrue(szEv.ev(1600));
         assertFalse(szEv.ev(1700));
+        assertFalse(szEv.ev(Integer.MAX_VALUE));
+        assertFalse(szEv.ev(Integer.MAX_VALUE-1));
     }
 }
