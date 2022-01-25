@@ -56,4 +56,6 @@ class ifSorozatTest {
         System.setIn(in);
         ifSorozat.main(new String[] {"arg1", "arg2", "arg3"});
     }
+
+
 }
