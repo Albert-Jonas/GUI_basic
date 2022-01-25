@@ -26,7 +26,10 @@ class szokoEvTest {
     @Test
     @DisplayName("Hívás évszámmal")
     void ev() {
+
+        assertFalse(szEv.ev(1576));
         assertFalse(szEv.ev(1581));
+        assertFalse(szEv.ev(1582));
         assertTrue(szEv.ev(2000));
         assertTrue(szEv.ev(2004));
         assertFalse(szEv.ev(2015));
