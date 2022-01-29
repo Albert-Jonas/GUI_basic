@@ -6,7 +6,7 @@ class RectanglePerimeter {
 
     // Method to calculate the perimeter of the rectangle
     // with given length and breadth
-    static void perimeter(int length, int breadth)
+    static int perimeter(int length, int breadth)
     {
         // Calculate the 'perimeter' using the formula
         int perimeter = 2 * (length + breadth);
@@ -14,6 +14,7 @@ class RectanglePerimeter {
         System.out.println("The perimeter of the given rectangle of length "
                 + length + " and breadth " + breadth + " = "
                 + perimeter);
+        return perimeter;
     }
 
     // Driver method
