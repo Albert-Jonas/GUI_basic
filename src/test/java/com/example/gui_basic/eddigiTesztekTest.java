@@ -28,6 +28,7 @@ class eddigiTesztekTest {
     @DisplayName("Public test - visszatérési érték tesztelés")
     void osszeadas() {
         assertEquals(20, eddigiTesztek.osszeadas(10,10));
+        assertNotEquals(40, eddigiTesztek.osszeadas(10,10));
 
     }
 }
